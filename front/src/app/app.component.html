@@ -1,0 +1,73 @@
+<div class="app">
+  <ng-container *ngIf="$isLogged() | async; else notLogged">
+    <mat-sidenav-container style="height: 100vh;">
+      <mat-sidenav #sidenav position="end" fxHide.gt-sm>
+        <div class="sidenav-content">
+          <div class="sidenav-top">
+            <span routerLink="posts">Aritcles</span>
+            <span routerLink="topics">Thèmes</span>
+          </div>
+          <div class="sidenav-bottom">
+            <mat-icon routerLink="me" class="link account">account_circle</mat-icon>
+          </div>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="navbar">
+          <img src="../assets/logo_p6.png" alt="" class="logo-image">
+          <div fxHide.lt-sm >
+            <span routerLink="posts" class="link">Articles</span>
+            <span routerLink="topics" class="link">Thèmes</span>
+            <mat-icon routerLink="me" class="link account">account_circle</mat-icon>
+            <!-- <span (click)="logout()" class="link">Logout</span> -->
+          </div>
+          <div fxShow.lt-sm fxHide.gt-sm (click)="sidenav.open()">
+            <mat-icon class="link">menu</mat-icon>
+          </div>          
+        </mat-toolbar>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </ng-container>
+  <ng-template #notLogged>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </ng-template>
+</div>
+
+
+
+
+
+
+ <!-- <div class="app">
+  <ng-container *ngIf="$isLogged() | async; else notLogged">
+    <mat-sidenav-container style="max-height: 100vh;">
+      <mat-sidenav  position="end" opened="true" mode="over"> Sidenav </mat-sidenav>
+      <mat-sidenav-content>
+        <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="navbar">
+          <img src="../assets/logo_p6.png" alt="" class="logo-image">
+          <div>
+            <span routerLink="posts" class="link">Posts</span>
+            <span routerLink="topics" class="link">Topics</span>
+            <mat-icon routerLink="me" class="link">account_circle</mat-icon>
+            <span (click)="logout()" class="link">Logout</span>
+          </div>
+        </mat-toolbar>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+   
+  </ng-container>
+
+  <ng-template #notLogged>
+  
+  </ng-template>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+ -->

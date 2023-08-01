@@ -1,0 +1,46 @@
+.detail-container {
+  display: flex;
+  flex-direction: column;
+}
+.subtitle-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.upper {
+  display: flex;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content {
+    display: flex;
+    // flex-wrap: wrap;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+  
+.post-card {
+margin-right: 5em;
+margin-left: 5em;
+}
+
+.username {
+    flex: 1 0 1%;
+}
+  
+.content {
+    flex: 1 0 80%; /* Adjust the width as needed */
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    padding: 15px;
+}
+  

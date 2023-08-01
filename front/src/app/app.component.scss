@@ -1,0 +1,53 @@
+.app {
+
+    .link {
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        &:hover {
+            color: #832fd6;
+        }
+    }
+
+    .link + .link {
+        margin-left: 10px;
+    }
+
+    .logo-image {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .navbar {
+        background-color: white;
+    }
+
+    .sidenav-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    mat-sidenav {
+        width: 70%;
+    }
+
+    .sidenav-top {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        margin-top: 4rem;
+        margin-right: 3em;
+    }
+
+    .account {
+        font-size: 26px;
+    }
+
+      
+    .sidenav-bottom {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

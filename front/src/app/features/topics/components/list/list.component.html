@@ -1,0 +1,45 @@
+<div class="">
+    <mat-grid-list [cols]="nbCols$ | async" rowHeight="200px" gutterSize="0px">
+        <mat-grid-tile *ngFor="let topic of topics$ | async">
+          <mat-card class="card-full-height">
+            <div>
+              <mat-card-title>{{ topic.name }}</mat-card-title>
+              <mat-card-content>
+                <p>{{ topic.description }}</p>
+              </mat-card-content>
+              <mat-card-footer>
+                <div class="button-container">
+                  <button *ngIf="!isUserSubscribed(topic)" mat-button mat-raised-button color="primary" (click)="subscribeToTopic(topic)">S'abonner</button>
+                  <button *ngIf="isUserSubscribed(topic)" mat-button mat-raised-button (click)="unsubscribeFromTopic(topic)">Se désabonner</button>
+                </div>
+              </mat-card-footer>
+            </div>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+      
+</div>
+
+
+
+<!-- <mat-card>
+    <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-card-title class="m0">topics available</mat-card-title>
+    </mat-card-header>
+    <div class="items mt2" fxLayout="row" fxLayout.lt-md="column">
+        <mat-card class="item" *ngFor="let topic of (topics$ | async)" fxFlex>
+            <mat-card-header>
+                <mat-card-title>{{ topic.id }}</mat-card-title>
+                <mat-card-title>{{ topic.name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    {{ topic.description }}
+                </p>
+
+                <button (click)="subscribeToTopic(topic)" *ngIf="!isUserSubscribed(topic)">Subscribe</button>
+                <button (click)="unsubscribeFromTopic(topic)" *ngIf="isUserSubscribed(topic)">Unsubscribe</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</mat-card> -->

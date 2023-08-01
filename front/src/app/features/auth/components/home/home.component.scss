@@ -1,0 +1,21 @@
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+  
+.center {
+    text-align: center;
+}
+
+button {
+    width: 8rem;
+    margin: 1rem;
+}
+  
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+  

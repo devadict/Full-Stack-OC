@@ -1,0 +1,13 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form-field {
+    width: 100%;
+    // max-width: 400px; /* Adjust the maximum width as needed */
+    max-width: 30rem;
+  }
+  

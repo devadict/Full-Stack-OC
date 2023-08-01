@@ -1,0 +1,55 @@
+<div class="flex-container">
+    <div fxLayout="row" fxLayoutAlign="start center" routerLink="">
+        <button mat-icon-button>
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+    </div>
+    <mat-card-content>
+        <div class="center">
+           <h1>Inscription</h1>
+           <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+            <div fxLayout="column" fxLayoutAlign="start center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nom d'utilisateur</mat-label>
+                    <input matInput placeholder="Nom d'utilisateur" formControlName="name">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput placeholder="Mot de passe" formControlName="password">
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Inscription</button>
+            <p *ngIf="onError" class="error">An error occurred</p>
+           </form>
+        </div>
+    </mat-card-content>
+</div>
+
+
+
+<!-- <div class="register" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>Register</mat-card-title>
+        </mat-card-header>
+        <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
+            <mat-card-content fxLayout="column">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Name" formControlName="name">
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Password" formControlName="password">
+                </mat-form-field>
+            </mat-card-content>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+            <span *ngIf="onError" class="error">An error occurred</span>
+        </form>
+    </mat-card>
+</div> -->
