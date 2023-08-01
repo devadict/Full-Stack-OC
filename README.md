@@ -2,7 +2,7 @@
 
 ## Installation
 
-Start MYSQL GUI and run the following script located here : "back/src/main/resources" 
+Start MYSQL GUI and run the following script located here : "back/src/main/resources/script.sql" 
 
 ## API
 
