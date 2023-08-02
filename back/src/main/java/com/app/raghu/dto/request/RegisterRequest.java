@@ -1,6 +1,7 @@
 package com.app.raghu.dto.request;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ public class RegisterRequest {
     private String email;
 
     @NonNull
-    @Size(max = 120)
+    @Size(min = 8)
+    @Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{8,}")
     private String password;
 }
