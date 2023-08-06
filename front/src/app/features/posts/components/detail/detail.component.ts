@@ -44,11 +44,11 @@ export class DetailComponent implements OnInit {
     const postId: number = Number(this.post!.id || this.route.snapshot.paramMap.get('id')!);
     const content: string = this.messageForm.value.content
     
-
     this.postsService.createMessage(userId, postId, content).subscribe(
       (messageResponse: PostResponse) => {
        console.log(messageResponse)
       });
+      window.location.reload();
   }
 
   private initForm(message?: Message): void {
