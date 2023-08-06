@@ -1,5 +1,5 @@
 <div class="detail-container">
-    <div class="detail" style="padding-bottom: 5rem;">
+    <div class="detail">
         <mat-card *ngIf="post" class="post-card">
             <div class="upper">
                 <div class="return">
@@ -23,7 +23,7 @@
             </mat-card-content>
         </mat-card>
     </div>
-    <div *ngIf="comments?.length" style="margin-left: 5em; margin-right: 5em;">
+    <div *ngIf="comments?.length" class="placement">
         <h3>Commentaires</h3>
         <ng-container *ngFor="let comment of comments">
             <mat-card>
@@ -34,9 +34,9 @@
             </mat-card>          
         </ng-container>
     </div>
-    <div style="margin-left: 5em; margin-right: 5em;"> 
+    <div class="placement"> 
         <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" style="display: flex;">
-            <textarea matInput placeholder="Message for the owner" rows="6" formControlName="content" style="width: 100%;"></textarea>
+            <textarea matInput placeholder="Message for the owner" rows="6" formControlName="content"></textarea>
             <div>
                 <button mat-raised-button color="primary" type="submit"
                 [disabled]="messageForm.invalid"><mat-icon>send</mat-icon></button>
@@ -44,57 +44,3 @@
         </form>
     </div>
 </div>
-
-
-
-<!-- <div class="detail">
-    <mat-card *ngIf="post">
-        <mat-card-title>
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <div fxLayout="row" fxLayoutAlign="start center">
-                    <button mat-icon-button (click)="back()">
-                        <mat-icon>arrow_back</mat-icon>
-                    </button>
-                    <h1>{{post.title | titlecase}}</h1>
-                </div>
-            </div>
-           
-        </mat-card-title>
-        <mat-card-content>
-            <div class="description">
-                <p>Description:</p>
-                {{ post.content }}
-            </div>
-            <div class="description">
-                <p>Description:</p>
-                {{ post.topic.name }}
-            </div>
-            <div class="date" class="my2" fxLayout="row" fxLayoutAlign="space-between center">
-                <div class="updated"><i>Last update: </i> {{ post.date| date: 'longDate'}}</div>
-            </div>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="mt2">
-        <mat-card-title>
-            <h2>Contact the owner</h2>
-        </mat-card-title>
-        <mat-card-content>
-            <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" fxLayout="column">
-                <textarea matInput placeholder="Message for the owner" rows="6" formControlName="content"></textarea>
-                <div fxLayout="row" fxLayoutAlign="end center" class="mt2">
-                    <button mat-raised-button color="primary" type="submit"
-                        [disabled]="messageForm.invalid">Send</button>
-                </div>
-            </form>
-        </mat-card-content>
-    </mat-card>
-
-    <div *ngIf="comments?.length">
-        <h3>Comments</h3>
-        
-        <ng-container *ngFor="let comment of comments">
-            <p>{{ comment?.content }}</p>
-            <p>{{ comment?.user?.name }}</p>
-        </ng-container>
-    </div>   
-</div> -->
