@@ -21,8 +21,8 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Mot de passe</mat-label>
-                    <input matInput placeholder="Mot de passe" formControlName="password">
-                    <mat-error> Votre mot de passe doit compter une majuscule, une miniscule, un cacratère spécial</mat-error>
+                    <input matInput type="password" placeholder="Mot de passe" formControlName="password">
+                    <mat-error> Il doit compter 8 caractères, une majuscule, une miniscule, un cacratère spécial</mat-error>
                 </mat-form-field>
             </div>
             <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Inscription</button>
