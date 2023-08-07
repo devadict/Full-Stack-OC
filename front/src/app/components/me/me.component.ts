@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable, map, of, tap } from 'rxjs';
+import { Observable, fromEvent, map, startWith, tap, shareReplay, of } from 'rxjs';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { PostResponse } from 'src/app/features/posts/interfaces/api/postResponse.interface';
 import { Topic } from 'src/app/features/topics/interfaces/topic.interface';
@@ -15,6 +15,16 @@ import { Location } from '@angular/common';
   styleUrls: ['./me.component.scss']
 })
 export class MeComponent implements OnInit {
+
+  public screenWidth$ = fromEvent(window, 'resize')
+  .pipe(
+    map(() => window.innerWidth),
+    startWith(window.innerWidth),
+    shareReplay(1)
+  );
+
+  
+  public readonly nbCols$ = this.screenWidth$.pipe(map(width => width <= 620 ? 1 : 2));
 
   public user: User | undefined;
   public form!: FormGroup;
@@ -63,9 +73,6 @@ export class MeComponent implements OnInit {
     return !!topic.subscribers.find((user: User) => user.id === this.user?.id);
   }
   
-
-
-
   private initForm(user?: User) {
     this.form = this.fb.group({
       email: [this.user?.email , [Validators.required]],

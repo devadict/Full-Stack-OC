@@ -40,10 +40,6 @@ export class FormComponent implements OnInit {
   }
 
   public submit(): void {
-    // const formData = new FormData();
-    // formData.append('title', this.postForm!.get('title')?.value);
-    // formData.append('content', this.postForm!.get('content')?.value);
-    // formData.append('topicId', this.postForm!.get('topicId')?.value);
     const topicId: number = Number(this.postForm?.value.topicId);
     const title = this.postForm?.value.title;
     const content = this.postForm?.value.content;
@@ -62,7 +58,7 @@ export class FormComponent implements OnInit {
     this.postForm = this.fb.group({
       title: [post ? post.title : '', [Validators.required]],
       content: [post ? post.content : '', [Validators.required]],
-      topicId: [0, [Validators.required]]
+      topicId: [null, [Validators.required]]
     });
   }
 

@@ -20,26 +20,3 @@
       
 </div>
 
-
-
-<!-- <mat-card>
-    <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
-        <mat-card-title class="m0">topics available</mat-card-title>
-    </mat-card-header>
-    <div class="items mt2" fxLayout="row" fxLayout.lt-md="column">
-        <mat-card class="item" *ngFor="let topic of (topics$ | async)" fxFlex>
-            <mat-card-header>
-                <mat-card-title>{{ topic.id }}</mat-card-title>
-                <mat-card-title>{{ topic.name }}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <p>
-                    {{ topic.description }}
-                </p>
-
-                <button (click)="subscribeToTopic(topic)" *ngIf="!isUserSubscribed(topic)">Subscribe</button>
-                <button (click)="unsubscribeFromTopic(topic)" *ngIf="isUserSubscribed(topic)">Unsubscribe</button>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</mat-card> -->
