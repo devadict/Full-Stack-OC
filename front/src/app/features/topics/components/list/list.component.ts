@@ -5,7 +5,6 @@ import { User } from 'src/app/interfaces/user.interface';
 import { Observable, fromEvent, map, startWith, tap, shareReplay, Subscription } from 'rxjs';
 import { SessionService } from 'src/app/services/session.service';
 import { Topic } from '../../interfaces/topic.interface';
-import { TopicsResponse } from '../../interfaces/api/topicsResponse.interface';
 
 @Component({
   selector: 'app-list',

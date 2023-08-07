@@ -8,6 +8,8 @@ import { Topic } from 'src/app/features/topics/interfaces/topic.interface';
 import { TopicsService } from 'src/app/features/topics/service/topics.service';
 import { User } from 'src/app/interfaces/user.interface';
 import { Location } from '@angular/common';
+import { SessionService } from 'src/app/services/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-me',
@@ -34,7 +36,9 @@ export class MeComponent implements OnInit {
   constructor(private authService: AuthService,
     private fb: FormBuilder,
     private topicsService: TopicsService,
-    private location: Location) { }
+    private location: Location,
+    private router: Router,
+    private sessionService: SessionService) { }
 
   public ngOnInit(): void {
     this.authService.me().subscribe(
@@ -44,6 +48,11 @@ export class MeComponent implements OnInit {
     this.initForm();
     this.loadSubscribedTopics();
 
+  }
+
+  public logout(): void {
+    this.sessionService.logOut();
+    this.router.navigate([''])
   }
 
   updateUser(userId: number) {
