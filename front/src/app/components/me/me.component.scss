@@ -11,8 +11,14 @@
     margin-bottom: 4rem;
   }
 
-.items {
-   
+.button-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}  
+.card-full-height {
+    height: 70%;
+    width: 70%;
 }
   
 .form-field {
