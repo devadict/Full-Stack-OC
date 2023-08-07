@@ -1,25 +1,26 @@
 <div class="list">
-        <div class="button-container">
-            <button mat-raised-button routerLink="create" color="primary">Créer un post</button>
-            <button mat-button>
-                <span>Trier par</span>
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
+  <div class="button-container">
+    <button mat-raised-button routerLink="create" color="primary">Créer un post</button>
+    <button mat-button (click)="sortPostsByDate()">
+      <span>Trier par</span>
+      <mat-icon>{{ isSortingAsc ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+    </button>
+  </div>
+
+  <mat-grid-list [cols]="nbCols$ | async" rowHeight="200px" gutterSize="15px">
+    <mat-grid-tile *ngFor="let post of (posts$ | async)?.posts">
+      <mat-card class="post-card" [routerLink]="['detail', post.id]">
+        <div>
+          <mat-card-title>{{ post.title }}</mat-card-title>
+          <div class="subtitle-container">
+            <p>{{ post.date | date: 'dd/MM/yyyy' }}</p>
+            <p>{{ post.author.name }}</p>
+          </div>
+          <mat-card-content>
+            <p>{{ post.content }}</p>
+          </mat-card-content>
         </div>
-    <mat-grid-list [cols]="nbCols$ | async" rowHeight="200px" gutterSize="15px">
-        <mat-grid-tile *ngFor="let post of (posts$ | async)?.posts">
-          <mat-card class="post-card" [routerLink]="['detail', post.id]">
-            <div>
-              <mat-card-title>{{ post.title }}</mat-card-title>
-              <div class="subtitle-container">  
-                <p> {{post.date | date: "dd/MM/yyyy"}}</p>
-                <p> {{post.author.name}}</p>
-                </div>
-              <mat-card-content>
-                <p>{{ post.content }}</p>
-              </mat-card-content>
-            </div>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
