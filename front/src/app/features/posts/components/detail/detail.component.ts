@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../../service/posts.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { MessagesService } from 'src/app/features/rentals/services/messages.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Post } from '../../interfaces/post.interface';
 import { Message } from '../../interfaces/message.interface';
@@ -21,7 +20,6 @@ export class DetailComponent implements OnInit {
 
   constructor( private route: ActivatedRoute,
     private fb: FormBuilder,
-    private messagesService: MessagesService,
     private postsService: PostsService,
     private sessionService: SessionService) { }
 
