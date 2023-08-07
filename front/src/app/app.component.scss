@@ -1,5 +1,13 @@
 .app {
 
+    .custom-icon {
+        font-size: 26px;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+
     .link {
         cursor: pointer;
         font-size: 16px;

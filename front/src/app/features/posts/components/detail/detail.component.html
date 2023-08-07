@@ -36,7 +36,7 @@
     </div>
     <div class="placement"> 
         <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" style="display: flex;">
-            <textarea matInput placeholder="Message for the owner" rows="6" formControlName="content"></textarea>
+            <textarea matInput placeholder="Commentez" rows="6" formControlName="content"></textarea>
             <div>
                 <button mat-raised-button color="primary" type="submit"
                 [disabled]="messageForm.invalid"><mat-icon>send</mat-icon></button>
