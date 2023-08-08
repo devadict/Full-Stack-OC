@@ -6,15 +6,18 @@ import { SessionService } from 'src/app/services/session.service';
 import { AuthSuccess } from '../../interfaces/authSuccess.interface';
 import { LoginRequest } from '../../interfaces/loginRequest.interface'; 
 import { AuthService } from '../../services/auth.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent  {
+export class LoginComponent implements OnInit  {
   public hide = true;
   public onError = false;
+
+  isResponsive!: boolean;
 
   public form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -24,7 +27,14 @@ export class LoginComponent  {
   constructor(private authService: AuthService, 
     private fb: FormBuilder, 
     private router: Router,
-    private sessionService: SessionService) { }
+    private sessionService: SessionService,
+    private breakpointObserver: BreakpointObserver) { }
+  
+    ngOnInit() {
+      this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Handset]).subscribe(result => {
+        this.isResponsive = result.matches;
+      });
+    }
 
   public submit(): void {
     const loginRequest = this.form.value as LoginRequest;

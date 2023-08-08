@@ -6,6 +6,9 @@
     </div>
     <mat-card-content>
         <div class="center">
+            <div class="logo" *ngIf="isResponsive">
+                <img src="../../../../../assets/logo_p6.png" alt="logo" class="responsive-image" />
+              </div>
            <h1>Inscription</h1>
            <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
             <div fxLayout="column" fxLayoutAlign="start center">
