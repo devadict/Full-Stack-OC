@@ -4,12 +4,25 @@
     align-items: center;
     justify-content: center;
     height: 60vh; /* Adjust the height as needed */
-  }
+}
 
-  img {
+.login-form {
+  width: 30rem;
+  .mat-form-field {
+      width: 100%;
+  }
+}
+.responsive-form {
+  width: 30rem;
+  .mat-form-field {
+      width: 65%;
+  }
+}
+
+img {
     width: 14rem;
-  }
+}
 
-  .logo {
+.logo {
     margin-bottom: 1em;
-  }
+}

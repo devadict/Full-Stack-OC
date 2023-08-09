@@ -6,6 +6,7 @@ import { SessionService } from 'src/app/services/session.service';
 import { Post } from '../../interfaces/post.interface';
 import { Message } from '../../interfaces/message.interface';
 import { PostResponse } from '../../interfaces/api/postResponse.interface';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-detail',
@@ -17,11 +18,14 @@ export class DetailComponent implements OnInit {
   public post: Post | undefined;
   public comments: Message[] | undefined; 
 
+  isResponsive!: boolean;
+
 
   constructor( private route: ActivatedRoute,
     private fb: FormBuilder,
     private postsService: PostsService,
-    private sessionService: SessionService) { }
+    private sessionService: SessionService,
+    private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
@@ -30,6 +34,9 @@ export class DetailComponent implements OnInit {
     this.postsService
       .detail(id)
       .subscribe((post: Post) => this.post = post);
+      this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Handset]).subscribe(result => {
+        this.isResponsive = result.matches;
+      });
   }
   
   public back() {

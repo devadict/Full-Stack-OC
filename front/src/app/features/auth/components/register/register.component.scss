@@ -6,12 +6,18 @@
     height: 60vh; /* Adjust the height as needed */
 }
 
-form {
+.login-form {
     width: 30rem;
     .mat-form-field {
         width: 100%;
     }
-}
+  }
+  .responsive-form {
+    width: 30rem;
+    .mat-form-field {
+        width: 65%;
+    }
+  }
 
 img {
     width: 14rem;
@@ -19,4 +25,4 @@ img {
 
   .logo {
     margin-bottom: 1em;
-  }
+}
