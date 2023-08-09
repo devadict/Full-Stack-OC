@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.app.raghu.dto.request.RegisterRequest;
 import com.app.raghu.entity.Topic;
 import com.app.raghu.entity.User;
 import com.app.raghu.repository.TopicRepository;
@@ -34,11 +35,13 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 	@Autowired
 	private TopicRepository topicRepository;
 
-	public User saveUser(User user) {
-
-		user.setPassword(pwdEncoder.encode(user.getPassword()));
+	public User saveUser(RegisterRequest registerRequest) {
+		User user = new User();
+		user.setId(user.getId());
+		user.setEmail(user.getEmail());
+		user.setPassword(pwdEncoder.encode(registerRequest.getPassword()));
 		user.setUpdated_at(LocalDateTime.now());
-		user.setUsername(user.getEmail());
+		user.setUsername(registerRequest.getEmail());
 		return repository.save(user);
 	}
 

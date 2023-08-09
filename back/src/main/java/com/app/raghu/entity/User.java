@@ -21,12 +21,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="users")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -68,14 +70,6 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
-	// @Schema(description = "Subjects followed", example = "Nature")
-	// @OneToMany
-	// @JoinTable(
-    // name = "user_comment",
-    // joinColumns = @JoinColumn(name = "user_id"),
-    // inverseJoinColumns = @JoinColumn(name = "comment_id")
-	// )
-	
-	// private List<Comment> comments; 
+
 
 }

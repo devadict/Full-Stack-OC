@@ -14,6 +14,13 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterRequest {
+
+
+    @NonNull
+    private String name;
+
+    @NonNull
+    private String username;
     
     @NonNull
     @Email

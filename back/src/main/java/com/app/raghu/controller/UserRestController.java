@@ -1,10 +1,12 @@
 package com.app.raghu.controller;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.raghu.dto.request.RegisterRequest;
 import com.app.raghu.dto.request.UserUpdateRequest;
 import com.app.raghu.dto.response.StringResponse;
 import com.app.raghu.entity.User;
@@ -43,6 +46,9 @@ public class UserRestController {
 	private UserRepository userRepository;
 
 	@Autowired
+	private BCryptPasswordEncoder pwdEncoder;
+
+	@Autowired
 	private IUserService service;
 
 	@Autowired
@@ -50,15 +56,20 @@ public class UserRestController {
 
 	@ApiOperation(value = "Registers the user if email does not exists already")
 	@PostMapping("/register")
-	public ResponseEntity<UserResponse> saveUser(@RequestBody User user) {
-		Optional<User> userExists = userRepository.findByUsername(user.getEmail());
+	public ResponseEntity<UserResponse> saveUser(@RequestBody RegisterRequest registerRequest) {
+		Optional<User> userExists = userRepository.findByUsername(registerRequest.getEmail());
 		
 		if (userExists.isPresent()) {
 			return ResponseEntity.status(HttpStatus.CONFLICT)
 					.body(new UserResponse("Username already exists"));
 		}
-		
-		service.saveUser(user);
+
+		User user = new User();
+        user.setName(registerRequest.getName());
+        user.setEmail(registerRequest.getEmail());
+        user.setUsername(registerRequest.getEmail());
+        user.setPassword(pwdEncoder.encode(registerRequest.getPassword()));
+		userRepository.save(user);
 
 		String token = jwtUtil.generateToken(user.getUsername());
 		
