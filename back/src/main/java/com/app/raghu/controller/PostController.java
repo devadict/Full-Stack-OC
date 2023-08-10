@@ -27,6 +27,7 @@ import com.app.raghu.service.IPostService;
 import com.app.raghu.service.ITopicService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(value = "Post REST Endpoint", description = "Post manipulation")
@@ -42,6 +43,7 @@ public class PostController {
     @Autowired
     private ITopicService topicService;
 
+    @ApiOperation(value = "Create an article")
     @PostMapping
     public ResponseEntity<StringResponse> createPost(@RequestBody CreatePost post) {
 
@@ -49,14 +51,16 @@ public class PostController {
         return ResponseEntity.ok(new StringResponse("You successfully created the post" + createdPost.getTitle()));
     }
     
+    @ApiOperation(value = "Retrieve postId and create comment for this article")
     @PostMapping("/{id}/comment")
     public ResponseEntity<StringResponse> createComment(@RequestBody CreateComment comment) {
-        
+
         commentService.createComment(comment);
-           
+
         return ResponseEntity.ok(new StringResponse("You successfully created the comment" + comment.getContent()));
     }
 
+    @ApiOperation(value = "Get all published articles")
     @GetMapping
     public ResponseEntity<PostListsResponse> getPosts() {
         return ResponseEntity.ok(postService.getAllPosts());
@@ -67,10 +71,9 @@ public class PostController {
         return ResponseEntity.ok(postService.getPostById(id));
     }
 
+    @ApiOperation(value = "Get all comments for one article")
     @GetMapping("/{id}/comments")
     public ResponseEntity<List<Comment>> getComments(@PathVariable Integer id) {
         return ResponseEntity.ok(commentService.findCommentsByPost(id));
     }
-        
-    
 }

@@ -40,7 +40,7 @@ public class Post {
     @Schema(description = "Content inside the post", example = "PWA using Vue...")
     private String content;
 
-    @Schema(description = "Creation time of the post", example = "Incoming")
+    @Schema(description = "Creation time of the post", example = "2023-06-19T14:30:00Z")
     @CreationTimestamp
     private Date date;
 

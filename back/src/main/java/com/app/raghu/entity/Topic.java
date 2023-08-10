@@ -27,12 +27,13 @@ public class Topic {
     @GeneratedValue
     private Integer id;
 
-    @Schema(description = "Name of the topic", example = "Nature")
+    @Schema(description = "Name of the topic", example = "Web 3")
     private String name;
 
-    @Schema(description = "Details of the topic", example = "Nature, solar system")
+    @Schema(description = "Details of the topic", example = "Learn how Web3 works")
     private String description;
-
+    
+    @Schema(description = "Users who follows the topic")
     @ManyToMany
     @JoinColumn(name = "topic_id")
     private List<User> subscribers;

@@ -23,6 +23,7 @@ import com.app.raghu.repository.UserRepository;
 import com.app.raghu.service.ITopicService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(value = "Topic REST Endpoint", description = "Topic manipulation")
@@ -40,22 +41,24 @@ public class TopicController {
         return ResponseEntity.ok(topicService.getAllTopics());
     }
 
+    @ApiOperation(value = "Follows topic if user do not already")
     @PostMapping("/{id}/follow")
     public ResponseEntity<StringResponse> subscription(@PathVariable Integer id) {
-  
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String username = authentication.getName();
-            Optional<User> userExists = userRepository.findByUsername(username);
 
-            User user = userExists.get();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Optional<User> userExists = userRepository.findByUsername(username);
 
-            Integer userId = user.getId();
-            topicService.subscribe(userId, id);
+        User user = userExists.get();
 
-            return ResponseEntity.ok(new StringResponse("You are following " + id));
-       
+        Integer userId = user.getId();
+        topicService.subscribe(userId, id);
+
+        return ResponseEntity.ok(new StringResponse("You are following " + id));
+
     }
     
+    @ApiOperation(value = "Unfollows topic if user user is following")
     @DeleteMapping("/{id}/unfollow")
     public ResponseEntity<StringResponse> unsubscribe(@PathVariable Integer id) {
 

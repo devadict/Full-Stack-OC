@@ -31,14 +31,16 @@ public class Comment {
 
     private String content;
 
-    @Schema(description = "Creation time of the comment", example = "Incoming")
+    @Schema(description = "Creation time of the comment", example = "2023-06-19T14:30:00Z")
     @CreationTimestamp
     private Date date;
 
+    @Schema(description = "Author of comment")
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Schema(description = "Post that is commented")
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;
